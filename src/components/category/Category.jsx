@@ -2,12 +2,45 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import myContext from '../../context/data/myContext';
 
+const categoriesData = [
+    {
+        name: 'Laptops',
+        imageUrl: 'https://cdn-icons-png.flaticon.com/128/428/428001.png',
+        slug: 'laptops',
+    },
+    {
+        name: 'Tablets',
+        imageUrl: 'https://cdn-icons-png.flaticon.com/128/10100/10100750.png',
+        slug: 'tablets',
+    },
+    {
+        name: 'Smartphones',
+        imageUrl: 'https://cdn-icons-png.flaticon.com/128/3137/3137807.png',
+        slug: 'smartphones',
+    },
+    {
+        name: 'Headphones',
+        imageUrl: 'https://cdn-icons-png.flaticon.com/128/6190/6190871.png',
+        slug: 'headphones',
+    },
+    {
+        name: 'Monitors',
+        imageUrl: 'https://cdn-icons-png.flaticon.com/128/186/186225.png',
+        slug: 'monitors',
+    },
+    {
+        name: 'Graphics Cards',
+        imageUrl: 'https://cdn-icons-png.flaticon.com/128/11894/11894960.png',
+        slug: 'graphics-cards',
+    },
+];
+
 function Category() {
     const { mode } = useContext(myContext);
     const navigate = useNavigate();
 
-    const handleCategoryClick = (category) => {
-        navigate(`/category/${category}`);
+    const handleCategoryClick = (slug) => {
+        navigate(`/category/${slug}`);
     };
 
     return (
@@ -30,152 +63,36 @@ function Category() {
 
                 <div className="overflow-x-auto whitespace-nowrap">
                     <div className="flex space-x-4 p-4">
-                        <div
-                            onClick={() => handleCategoryClick('laptops')}
-                            className="bg-white rounded-lg p-6 flex-shrink-0 w-60 h-72 border drop-shadow-lg cursor-pointer"
-                            style={{
-                                backgroundColor:
-                                    mode === 'dark' ? 'rgb(46 49 55)' : '',
-                            }}
-                        >
-                            <div className="">
-                                <img
-                                    src="https://cdn-icons-png.flaticon.com/128/428/428001.png"
-                                    alt="Laptops"
-                                    className="w-full h-40 object-fit rounded-lg"
-                                />
-                                <div
-                                    className="flex justify-center items-center sm:text-2xl text-xl font-medium title-font my-10 text-black"
-                                    style={{
-                                        color: mode === 'dark' ? 'white' : '',
-                                    }}
-                                >
-                                    Laptops
+                        {categoriesData.map((category) => (
+                            <div
+                                key={category.slug}
+                                onClick={() =>
+                                    handleCategoryClick(category.slug)
+                                }
+                                className="bg-white rounded-lg p-6 flex-shrink-0 w-60 h-72 border drop-shadow-lg cursor-pointer"
+                                style={{
+                                    backgroundColor:
+                                        mode === 'dark' ? 'rgb(46 49 55)' : '',
+                                }}
+                            >
+                                <div className="">
+                                    <img
+                                        src={category.imageUrl}
+                                        alt={category.name}
+                                        className="w-full h-40 object-fit rounded-lg"
+                                    />
+                                    <div
+                                        className="flex justify-center items-center sm:text-2xl text-xl font-medium title-font my-10 text-black"
+                                        style={{
+                                            color:
+                                                mode === 'dark' ? 'white' : '',
+                                        }}
+                                    >
+                                        {category.name}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div
-                            onClick={() => handleCategoryClick('tablets')}
-                            className="bg-white rounded-lg p-6 flex-shrink-0 w-60 h-72 border drop-shadow-lg cursor-pointer"
-                            style={{
-                                backgroundColor:
-                                    mode === 'dark' ? 'rgb(46 49 55)' : '',
-                            }}
-                        >
-                            <div className="">
-                                <img
-                                    src="https://cdn-icons-png.flaticon.com/128/10100/10100750.png"
-                                    alt="Tablets"
-                                    className="w-full h-40 object-fit rounded-lg"
-                                />
-                                <div
-                                    className="flex justify-center items-center sm:text-2xl text-xl font-medium title-font my-10 text-black"
-                                    style={{
-                                        color: mode === 'dark' ? 'white' : '',
-                                    }}
-                                >
-                                    Tablets
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            onClick={() => handleCategoryClick('smartphones')}
-                            className="bg-white rounded-lg p-6 flex-shrink-0 w-60 h-72 border drop-shadow-lg cursor-pointer"
-                            style={{
-                                backgroundColor:
-                                    mode === 'dark' ? 'rgb(46 49 55)' : '',
-                            }}
-                        >
-                            <div className="">
-                                <img
-                                    src="https://cdn-icons-png.flaticon.com/128/3137/3137807.png"
-                                    alt="Smartphones"
-                                    className="w-full h-40 object-fit rounded-lg"
-                                />
-                                <div
-                                    className="flex justify-center items-center sm:text-2xl text-xl font-medium title-font my-10 text-black"
-                                    style={{
-                                        color: mode === 'dark' ? 'white' : '',
-                                    }}
-                                >
-                                    Smartphones
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            onClick={() => handleCategoryClick('headphones')}
-                            className="bg-white rounded-lg p-6 flex-shrink-0 w-60 h-72 border drop-shadow-lg cursor-pointer"
-                            style={{
-                                backgroundColor:
-                                    mode === 'dark' ? 'rgb(46 49 55)' : '',
-                            }}
-                        >
-                            <div className="">
-                                <img
-                                    src="https://cdn-icons-png.flaticon.com/128/6190/6190871.png"
-                                    alt="Headphones"
-                                    className="w-full h-40 object-fit rounded-lg"
-                                />
-                                <div
-                                    className="flex justify-center items-center sm:text-2xl text-xl font-medium title-font my-10 text-black"
-                                    style={{
-                                        color: mode === 'dark' ? 'white' : '',
-                                    }}
-                                >
-                                    Headphones
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            onClick={() => handleCategoryClick('monitors')}
-                            className="bg-white rounded-lg p-6 flex-shrink-0 w-60 h-72 border drop-shadow-lg cursor-pointer"
-                            style={{
-                                backgroundColor:
-                                    mode === 'dark' ? 'rgb(46 49 55)' : '',
-                            }}
-                        >
-                            <div className="">
-                                <img
-                                    src="https://cdn-icons-png.flaticon.com/128/186/186225.png"
-                                    alt="Monitors"
-                                    className="w-full h-40 object-fit rounded-lg"
-                                />
-                                <div
-                                    className="flex justify-center items-center sm:text-2xl text-xl font-medium title-font my-10 text-black"
-                                    style={{
-                                        color: mode === 'dark' ? 'white' : '',
-                                    }}
-                                >
-                                    Monitors
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            onClick={() =>
-                                handleCategoryClick('graphics-cards')
-                            }
-                            className="bg-white rounded-lg p-6 flex-shrink-0 w-60 h-72 border drop-shadow-lg cursor-pointer"
-                            style={{
-                                backgroundColor:
-                                    mode === 'dark' ? 'rgb(46 49 55)' : '',
-                            }}
-                        >
-                            <div className="">
-                                <img
-                                    src="https://cdn-icons-png.flaticon.com/128/11894/11894960.png"
-                                    alt="Graphics Cards"
-                                    className="w-full h-40 object-fit rounded-lg"
-                                />
-                                <div
-                                    className="flex justify-center items-center sm:text-2xl text-xl font-medium title-font my-10 text-black"
-                                    style={{
-                                        color: mode === 'dark' ? 'white' : '',
-                                    }}
-                                >
-                                    Graphics Cards
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
